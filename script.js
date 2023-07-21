@@ -6,6 +6,8 @@ const palavraSecreta = palavras[Math.floor(Math.random()*palavras.length)]
 const letrasCertas = []
 const letrasErradas = []
 const teclas = document.querySelectorAll(".letter")
+const imgs = document.querySelectorAll(".img")
+mostrarLetrasCertas()
 
 //Pegar a letra digitada pelo teclado
 document.addEventListener("keydown", (e)=>{
@@ -45,6 +47,7 @@ function atualizarJogo(){
     mostrarLetrasCertas()
     mostrarTeclasCertas()
     mostrarTeclasErradas()
+    desenharForca()
 }
 
 
@@ -53,9 +56,9 @@ function mostrarLetrasCertas(){
     palavra.innerHTML = ""
     palavraSecreta.split("").forEach(letra =>{
         if(letrasCertas.includes(letra)){
-            palavra.innerHTML += letra
+            palavra.innerHTML += '<span>'+letra+'<span>'
         }else{
-            palavra.innerHTML += '_'
+            palavra.innerHTML += '<span>_<span>'
         }
     })
 }
@@ -74,4 +77,13 @@ function mostrarTeclasErradas(){
             tecla.classList.add("wrong")
         }
     })
+}
+
+function desenharForca(){
+    for(i=0;i<letrasErradas.length;i++){
+        imgs[i+1].style.display = "block";
+        for(k=0;k<=letrasErradas.length-1;k++){
+            imgs[k].style.display="none"
+        }
+    }
 }
