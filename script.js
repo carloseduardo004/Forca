@@ -1,5 +1,5 @@
 //Definindo as possíveis palavras com suas respectivas dicas
-const palavras = [["brasil","País"],["cachorro","Animal"],["feijoada","Comida"],["argentina","País"],["golfinho","animal"]]
+const palavras = [["brasil","País"],["cachorro","Animal"],["feijoada","Comida"],["argentina","País"],["golfinho","animal"],]
 //Sorteando aleatoriamente uma palavra
 const palavraArray = palavras[Math.floor(Math.random()*palavras.length)]
 const palavraSecreta = palavraArray[0]
