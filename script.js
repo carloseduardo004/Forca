@@ -5,9 +5,9 @@ const palavraSecreta = palavras[Math.floor(Math.random()*palavras.length)]
 
 const letrasCertas = []
 const letrasErradas = []
-const teclas = document.querySelectorAll(".letter")
+const teclas = document.querySelectorAll("#letter")
 const imgs = document.querySelectorAll(".img")
-const Modal = document.querySelector("#Modal");
+const Modal = document.querySelector("#Modal")
 mostrarLetrasCertas()
 
 //Pegar a letra digitada pelo teclado
@@ -117,3 +117,27 @@ function modal(text){
 function jogarNovamente() {
     location.reload()
 }
+
+// Clicar nas teclas
+document.addEventListener("click",(e)=>{
+    const click = e.target
+    //Checar se é uma div de tecla
+    if(click.id === "letter"){
+        //Mesma lógica do teclado
+        const letra = click.innerText.toLowerCase()
+        if(letrasErradas.includes(letra) || letrasCertas.includes(letra))
+            {
+            }else{
+                if(palavraSecreta.includes(letra)){
+                    if(!letrasCertas.includes(letra)){
+                        letrasCertas.push(letra)
+                    }
+                }else{
+                    if(!letrasErradas.includes(letra)){
+                        letrasErradas.push(letra)
+                    }                
+                }
+            }
+            atualizarJogo()
+    }
+})
