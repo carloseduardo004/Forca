@@ -7,35 +7,38 @@ const letrasCertas = []
 const letrasErradas = []
 const teclas = document.querySelectorAll(".letter")
 const imgs = document.querySelectorAll(".img")
+const Modal = document.querySelector("#Modal");
 mostrarLetrasCertas()
 
 //Pegar a letra digitada pelo teclado
 document.addEventListener("keydown", (e)=>{
     const codigo = e.keyCode;
-    if(isletra(codigo)){
-        const letra = e.key;
-        //Teste se a letra já foi digitada
-        if(letrasErradas.includes(letra) || letrasCertas.includes(letra))
-        {
-            //MOSTRAR AVISO DE REPETIDA
-        }else{
-            //Teste se a palavra inclui a letra digitada
-            if(palavraSecreta.includes(letra)){
-                //Teste para evitar elementos repetidos dentro do Array
-                if(!letrasCertas.includes(letra)){
-                    //Acrescentar a letra digitada no Array
-                    letrasCertas.push(letra)
-                }
+    if(Modal.style.display ===""){
+        if(isletra(codigo)){
+            const letra = e.key;
+            //Teste se a letra já foi digitada
+            if(letrasErradas.includes(letra) || letrasCertas.includes(letra))
+            {
+                //MOSTRAR AVISO DE REPETIDA
             }else{
-                //Teste para evitar elementos repetidos dentro do Array
-                if(!letrasErradas.includes(letra)){
-                    //Acrescentar a letra digitada no Array
-                    letrasErradas.push(letra)
-                }                
+                //Teste se a palavra inclui a letra digitada
+                if(palavraSecreta.includes(letra)){
+                    //Teste para evitar elementos repetidos dentro do Array
+                    if(!letrasCertas.includes(letra)){
+                        //Acrescentar a letra digitada no Array
+                        letrasCertas.push(letra)
+                    }
+                }else{
+                    //Teste para evitar elementos repetidos dentro do Array
+                    if(!letrasErradas.includes(letra)){
+                        //Acrescentar a letra digitada no Array
+                        letrasErradas.push(letra)
+                    }                
+                }
             }
-        }
-        atualizarJogo()
-    } 
+            atualizarJogo()
+        } 
+    }
 })
 
 //Teste se a tecla é uma letra
@@ -48,6 +51,7 @@ function atualizarJogo(){
     mostrarTeclasCertas()
     mostrarTeclasErradas()
     desenharForca()
+    checarJogo()
 }
 
 
@@ -86,4 +90,30 @@ function desenharForca(){
             imgs[k].style.display="none"
         }
     }
+}
+
+function checarJogo(){
+    perdeu()
+    ganhou()
+}
+
+function perdeu(){
+    if(letrasErradas.length === imgs.length-1){
+       modal("Que pena... Você perdeu. :(")
+    }
+}
+function ganhou(){
+    if (document.querySelector(".word").innerText === palavraSecreta){
+        modal("Parabéns, você ganhou! :)")
+    }
+}
+
+function modal(text){
+  const frase = document.querySelector(".frase");
+  frase.innerText = text  
+  Modal.style.display = "block";
+}
+
+function jogarNovamente() {
+    location.reload()
 }
