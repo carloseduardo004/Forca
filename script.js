@@ -1,7 +1,9 @@
-//Definindo as possíveis palavras
-const palavras = ["mel","dudu","vitor","luana","samira","carlos"]
+//Definindo as possíveis palavras com suas respectivas dicas
+const palavras = [["brasil","País"],["cachorro","Animal"],["feijoada","Comida"],["argentina","País"],["golfinho","animal"]]
 //Sorteando aleatoriamente uma palavra
-const palavraSecreta = palavras[Math.floor(Math.random()*palavras.length)]
+const palavraArray = palavras[Math.floor(Math.random()*palavras.length)]
+const palavraSecreta = palavraArray[0]
+const dica = palavraArray[1]
 
 const letrasCertas = []
 const letrasErradas = []
@@ -9,7 +11,7 @@ const teclas = document.querySelectorAll("#letter")
 const imgs = document.querySelectorAll(".img")
 const Modal = document.querySelector("#Modal")
 mostrarLetrasCertas()
-
+mostrarDica()
 //Pegar a letra digitada pelo teclado
 document.addEventListener("keydown", (e)=>{
     const codigo = e.keyCode;
@@ -65,6 +67,10 @@ function mostrarLetrasCertas(){
             palavra.innerHTML += '<span>_<span>'
         }
     })
+}
+function mostrarDica(){
+    const dicaDiv = document.querySelector(".tip")
+    dicaDiv.innerHTML += dica
 }
 
 function mostrarTeclasCertas(){
