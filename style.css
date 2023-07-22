@@ -5,7 +5,15 @@
     font-family: 'Roboto', sans-serif;
 
 }
-
+body{
+    background-color: #466292;
+}
+h1{
+    text-align: center;
+    color: #e5c24b;
+    font-size: 45px;
+    margin-top: 10px;
+}
 .keyboard{
     display: flex;
     flex-direction: column;
@@ -52,6 +60,7 @@
 .tip{
     font-size: 15px;
     align-self: flex-start;
+    color: #e5c24b;
 }
 .word span{
     margin: 0 3px 0 3px;
@@ -95,10 +104,10 @@
 
   .modal-content {
     background-color: #fefefe;
-    margin: 10% auto;
+    margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 50%; 
+    width: 30%; 
     height: 10vh;
     display: flex;
     flex-direction: column;
@@ -112,11 +121,13 @@
 
 .btn {
     margin-top: 20px;
-    color: #3a3939;
     float: right;
     font-size: 20px;
     font-weight: 500;
-    padding: 5px 10% 5px 10%;
+    padding: 5px 30px 5px 30px;
+    background-color: #e5c24b;
+    border: none;
+    border-radius: 10px;
   }
   
   .btn:hover,
@@ -144,9 +155,13 @@
     }
     .forca{
         padding: 5% 0 5% 0;
+        justify-content: center;
     }
     .tip{
         align-self: center;
+    }
+    .forca img{
+        width: 60%;
     }
 }
 @media (max-width:600px){

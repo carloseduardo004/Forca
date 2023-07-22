@@ -15,7 +15,7 @@ mostrarDica()
 //Pegar a letra digitada pelo teclado
 document.addEventListener("keydown", (e)=>{
     const codigo = e.keyCode;
-    if(Modal.style.display ===""){
+    if(Modal.style.display == ""){
         if(isletra(codigo)){
             const letra = e.key;
             //Teste se a letra já foi digitada
@@ -105,12 +105,12 @@ function checarJogo(){
 
 function perdeu(){
     if(letrasErradas.length === imgs.length-1){
-       modal("Que pena... Você perdeu. :(")
+       modal("Que pena... Você perdeu.")
     }
 }
 function ganhou(){
     if (document.querySelector(".word").innerText === palavraSecreta){
-        modal("Parabéns, você ganhou! :)")
+        modal("Parabéns, você ganhou!")
     }
 }
 
